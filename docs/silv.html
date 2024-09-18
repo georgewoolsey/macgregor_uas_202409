@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 4 Silvicultural Metrics | Manitou Experimental Forest UAS Mission Data Summary</title>
+  <meta name="description" content="Using the bookdown package to write a book of data exploration. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 4 Silvicultural Metrics | Manitou Experimental Forest UAS Mission Data Summary" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Using the bookdown package to write a book of data exploration. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 4 Silvicultural Metrics | Manitou Experimental Forest UAS Mission Data Summary" />
+  
+  <meta name="twitter:description" content="Using the bookdown package to write a book of data exploration. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="George Woolsey" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="tree_spatial.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
+<script type="text/javascript">
+
+// toggle visibility of R source blocks in R Markdown output
+function toggle_R() {
+  var x = document.getElementsByClassName('r');
+  if (x.length == 0) return;
+  function toggle_vis(o) {
+    var d = o.style.display;
+    o.style.display = (d == 'block' || d == '') ? 'none':'block';
+  }
+
+  for (i = 0; i < x.length; i++) {
+    var y = x[i];
+    if (y.tagName.toLowerCase() === 'pre') toggle_vis(y);
+  }
+
+    var elem = document.getElementById("myButton1");
+    if (elem.value === "Hide Code") elem.value = "Show Code";
+    else elem.value = "Hide Code";
+}
+
+document.write('<input onclick="toggle_R();" type="button" value="Hide Code" id="myButton1" style="position: absolute; top: 10%; right: 2%; z-index: 200"></input>')
+
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="data_prep.html"><a href="data_prep.html"><i class="fa fa-check"></i><b>2</b> Data Preparation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data_prep.html"><a href="data_prep.html#data-load"><i class="fa fa-check"></i><b>2.1</b> Data Load</a></li>
+<li class="chapter" data-level="2.2" data-path="data_prep.html"><a href="data_prep.html#load-orthomosaic-rasters"><i class="fa fa-check"></i><b>2.2</b> Load orthomosaic rasters</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="data_prep.html"><a href="data_prep.html#plot-orthomosaic-from-uas"><i class="fa fa-check"></i><b>2.2.1</b> Plot Orthomosaic from UAS</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data_prep.html"><a href="data_prep.html#what-is-this-point-cloud"><i class="fa fa-check"></i><b>2.3</b> What is this Point Cloud?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tree_spatial.html"><a href="tree_spatial.html"><i class="fa fa-check"></i><b>3</b> UAS Tree Spatial Arrangement and ICO Example</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="tree_spatial.html"><a href="tree_spatial.html#example-tree-clump-grouping"><i class="fa fa-check"></i><b>3.1</b> Example Tree Clump Grouping</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="tree_spatial.html"><a href="tree_spatial.html#itd"><i class="fa fa-check"></i><b>3.1.1</b> ITD</a></li>
+<li class="chapter" data-level="3.1.2" data-path="tree_spatial.html"><a href="tree_spatial.html#tree-groups"><i class="fa fa-check"></i><b>3.1.2</b> Tree Groups</a></li>
+<li class="chapter" data-level="3.1.3" data-path="tree_spatial.html"><a href="tree_spatial.html#within-clump-distance"><i class="fa fa-check"></i><b>3.1.3</b> Within Clump Distance</a></li>
+<li class="chapter" data-level="3.1.4" data-path="tree_spatial.html"><a href="tree_spatial.html#clump_sum"><i class="fa fa-check"></i><b>3.1.4</b> Clump Polygons and Metrics</a></li>
+<li class="chapter" data-level="3.1.5" data-path="tree_spatial.html"><a href="tree_spatial.html#clump-spacing"><i class="fa fa-check"></i><b>3.1.5</b> Clump Spacing</a></li>
+<li class="chapter" data-level="3.1.6" data-path="tree_spatial.html"><a href="tree_spatial.html#clump_metrics"><i class="fa fa-check"></i><b>3.1.6</b> Clump Metrics</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="tree_spatial.html"><a href="tree_spatial.html#ico-implementation"><i class="fa fa-check"></i><b>3.2</b> ICO Implementation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="tree_spatial.html"><a href="tree_spatial.html#determine-the-stand-average-density-target"><i class="fa fa-check"></i><b>3.2.1</b> 3. Determine the stand average density target</a></li>
+<li class="chapter" data-level="3.2.2" data-path="tree_spatial.html"><a href="tree_spatial.html#set_targets"><i class="fa fa-check"></i><b>3.2.2</b> 5. Obtain targets for clump proportions</a></li>
+<li class="chapter" data-level="3.2.3" data-path="tree_spatial.html"><a href="tree_spatial.html#select-target-clump-proportions-for-your-stand"><i class="fa fa-check"></i><b>3.2.3</b> 6. Select target clump proportions for your stand</a></li>
+<li class="chapter" data-level="3.2.4" data-path="tree_spatial.html"><a href="tree_spatial.html#combine-clump-and-opening-targets-with-leave-tree-criteria-into-marking-guidelines"><i class="fa fa-check"></i><b>3.2.4</b> 8. Combine clump and opening targets with leave tree criteria into marking guidelines</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="silv.html"><a href="silv.html"><i class="fa fa-check"></i><b>4</b> Silvicultural Metrics</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="silv.html"><a href="silv.html#stand-summary-metrics"><i class="fa fa-check"></i><b>4.1</b> Stand Summary Metrics</a></li>
+<li class="chapter" data-level="4.2" data-path="silv.html"><a href="silv.html#dbh-distrubtion"><i class="fa fa-check"></i><b>4.2</b> DBH Distrubtion</a></li>
+<li class="chapter" data-level="4.3" data-path="silv.html"><a href="silv.html#height-distribution"><i class="fa fa-check"></i><b>4.3</b> Height Distribution</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Manitou Experimental Forest UAS Mission Data Summary</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="silv" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Section 4</span> Silvicultural Metrics<a href="silv.html#silv" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Overstory metrics are calculated using the UAS SfM-derived DBH and height measurements, where DBH is estimated using a local DBH-Height allometric relationship. In the following analysis and reporting, overstory includes any tree where the DBH is 6.0 in. (15.24 cm) or greater. Understory includes any tree where the DBH is less than 6.0 in. (15.24 cm) or greater.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="silv.html#cb91-1" tabindex="-1"></a><span class="co"># Common silvicultural metrics are calculated for the entire extent.</span></span>
+<span id="cb91-2"><a href="silv.html#cb91-2" tabindex="-1"></a>  <span class="co"># Note, that stand-level summaries can be computed if stand vector data is provided.</span></span>
+<span id="cb91-3"><a href="silv.html#cb91-3" tabindex="-1"></a>  <span class="co"># metrics include:</span></span>
+<span id="cb91-4"><a href="silv.html#cb91-4" tabindex="-1"></a>    <span class="co"># &quot;n_trees&quot;</span></span>
+<span id="cb91-5"><a href="silv.html#cb91-5" tabindex="-1"></a>    <span class="co"># &quot;stand_area_ha&quot;</span></span>
+<span id="cb91-6"><a href="silv.html#cb91-6" tabindex="-1"></a>    <span class="co"># &quot;trees_per_ha&quot;</span></span>
+<span id="cb91-7"><a href="silv.html#cb91-7" tabindex="-1"></a>    <span class="co"># &quot;mean_dbh_cm&quot;</span></span>
+<span id="cb91-8"><a href="silv.html#cb91-8" tabindex="-1"></a>    <span class="co"># &quot;qmd_cm&quot;</span></span>
+<span id="cb91-9"><a href="silv.html#cb91-9" tabindex="-1"></a>    <span class="co"># &quot;mean_tree_height_m&quot;</span></span>
+<span id="cb91-10"><a href="silv.html#cb91-10" tabindex="-1"></a>    <span class="co"># &quot;loreys_height_m&quot;</span></span>
+<span id="cb91-11"><a href="silv.html#cb91-11" tabindex="-1"></a>    <span class="co"># &quot;basal_area_m2&quot;</span></span>
+<span id="cb91-12"><a href="silv.html#cb91-12" tabindex="-1"></a>    <span class="co"># &quot;basal_area_m2_per_ha&quot;</span></span>
+<span id="cb91-13"><a href="silv.html#cb91-13" tabindex="-1"></a><span class="co"># filter trees based on stand area</span></span>
+<span id="cb91-14"><a href="silv.html#cb91-14" tabindex="-1"></a>harvests_trees <span class="ot">=</span> stand_sf <span class="sc">%&gt;%</span> </span>
+<span id="cb91-15"><a href="silv.html#cb91-15" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb91-16"><a href="silv.html#cb91-16" tabindex="-1"></a>    <span class="at">stand_area_m2 =</span> sf<span class="sc">::</span><span class="fu">st_area</span>(.) <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()</span>
+<span id="cb91-17"><a href="silv.html#cb91-17" tabindex="-1"></a>    , <span class="at">stand_area_ha =</span> stand_area_m2<span class="sc">/</span><span class="dv">10000</span></span>
+<span id="cb91-18"><a href="silv.html#cb91-18" tabindex="-1"></a>    , <span class="at">suid =</span> <span class="st">&quot;1&quot;</span></span>
+<span id="cb91-19"><a href="silv.html#cb91-19" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb91-20"><a href="silv.html#cb91-20" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb91-21"><a href="silv.html#cb91-21" tabindex="-1"></a>    suid, stand_area_m2, stand_area_ha</span>
+<span id="cb91-22"><a href="silv.html#cb91-22" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb91-23"><a href="silv.html#cb91-23" tabindex="-1"></a>  sf<span class="sc">::</span><span class="fu">st_intersection</span>(treetops_sf_with_dbh)</span>
+<span id="cb91-24"><a href="silv.html#cb91-24" tabindex="-1"></a></span>
+<span id="cb91-25"><a href="silv.html#cb91-25" tabindex="-1"></a><span class="do">### stand-level summaries</span></span>
+<span id="cb91-26"><a href="silv.html#cb91-26" tabindex="-1"></a>  silv_metrics <span class="ot">=</span> harvests_trees <span class="sc">%&gt;%</span></span>
+<span id="cb91-27"><a href="silv.html#cb91-27" tabindex="-1"></a>    sf<span class="sc">::</span><span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb91-28"><a href="silv.html#cb91-28" tabindex="-1"></a>    <span class="co"># dplyr::filter(dbh_cm &gt;= ostory_dbh_cm) %&gt;% </span></span>
+<span id="cb91-29"><a href="silv.html#cb91-29" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb91-30"><a href="silv.html#cb91-30" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">group_by</span>(suid,stand_area_ha) <span class="sc">%&gt;%</span></span>
+<span id="cb91-31"><a href="silv.html#cb91-31" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb91-32"><a href="silv.html#cb91-32" tabindex="-1"></a>      <span class="at">n_trees =</span> dplyr<span class="sc">::</span><span class="fu">n_distinct</span>(treeID)</span>
+<span id="cb91-33"><a href="silv.html#cb91-33" tabindex="-1"></a>      , <span class="at">mean_dbh_cm =</span> <span class="fu">mean</span>(dbh_cm, <span class="at">na.rm =</span> T)</span>
+<span id="cb91-34"><a href="silv.html#cb91-34" tabindex="-1"></a>      , <span class="at">mean_tree_height_m =</span> <span class="fu">mean</span>(tree_height_m, <span class="at">na.rm =</span> T)</span>
+<span id="cb91-35"><a href="silv.html#cb91-35" tabindex="-1"></a>      , <span class="at">loreys_height_m =</span> <span class="fu">sum</span>(basal_area_m2<span class="sc">*</span>tree_height_m, <span class="at">na.rm =</span> T) <span class="sc">/</span> <span class="fu">sum</span>(basal_area_m2, <span class="at">na.rm =</span> T)</span>
+<span id="cb91-36"><a href="silv.html#cb91-36" tabindex="-1"></a>      , <span class="at">basal_area_m2 =</span> <span class="fu">sum</span>(basal_area_m2, <span class="at">na.rm =</span> T)</span>
+<span id="cb91-37"><a href="silv.html#cb91-37" tabindex="-1"></a>      , <span class="at">sum_dbh_cm_sq =</span> <span class="fu">sum</span>(dbh_cm<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> T)</span>
+<span id="cb91-38"><a href="silv.html#cb91-38" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb91-39"><a href="silv.html#cb91-39" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb91-40"><a href="silv.html#cb91-40" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb91-41"><a href="silv.html#cb91-41" tabindex="-1"></a>      <span class="at">trees_per_ha =</span> (n_trees<span class="sc">/</span>stand_area_ha)</span>
+<span id="cb91-42"><a href="silv.html#cb91-42" tabindex="-1"></a>      , <span class="at">basal_area_m2_per_ha =</span> (basal_area_m2<span class="sc">/</span>stand_area_ha)</span>
+<span id="cb91-43"><a href="silv.html#cb91-43" tabindex="-1"></a>      , <span class="at">qmd_cm =</span> <span class="fu">sqrt</span>(sum_dbh_cm_sq<span class="sc">/</span>n_trees)</span>
+<span id="cb91-44"><a href="silv.html#cb91-44" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb91-45"><a href="silv.html#cb91-45" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(sum_dbh_cm_sq)) <span class="sc">%&gt;%</span></span>
+<span id="cb91-46"><a href="silv.html#cb91-46" tabindex="-1"></a>    <span class="co"># convert to imperial units</span></span>
+<span id="cb91-47"><a href="silv.html#cb91-47" tabindex="-1"></a>    <span class="fu">calc_imperial_units_fn</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb91-48"><a href="silv.html#cb91-48" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb91-49"><a href="silv.html#cb91-49" tabindex="-1"></a>      <span class="st">&quot;suid&quot;</span></span>
+<span id="cb91-50"><a href="silv.html#cb91-50" tabindex="-1"></a>      , <span class="st">&quot;n_trees&quot;</span></span>
+<span id="cb91-51"><a href="silv.html#cb91-51" tabindex="-1"></a>      , <span class="st">&quot;stand_area_ha&quot;</span></span>
+<span id="cb91-52"><a href="silv.html#cb91-52" tabindex="-1"></a>      , <span class="st">&quot;trees_per_ha&quot;</span></span>
+<span id="cb91-53"><a href="silv.html#cb91-53" tabindex="-1"></a>      , <span class="st">&quot;mean_dbh_cm&quot;</span></span>
+<span id="cb91-54"><a href="silv.html#cb91-54" tabindex="-1"></a>      , <span class="st">&quot;qmd_cm&quot;</span></span>
+<span id="cb91-55"><a href="silv.html#cb91-55" tabindex="-1"></a>      , <span class="st">&quot;mean_tree_height_m&quot;</span></span>
+<span id="cb91-56"><a href="silv.html#cb91-56" tabindex="-1"></a>      , <span class="st">&quot;loreys_height_m&quot;</span></span>
+<span id="cb91-57"><a href="silv.html#cb91-57" tabindex="-1"></a>      , <span class="st">&quot;basal_area_m2&quot;</span></span>
+<span id="cb91-58"><a href="silv.html#cb91-58" tabindex="-1"></a>      , <span class="st">&quot;basal_area_m2_per_ha&quot;</span></span>
+<span id="cb91-59"><a href="silv.html#cb91-59" tabindex="-1"></a>      <span class="co"># imperial</span></span>
+<span id="cb91-60"><a href="silv.html#cb91-60" tabindex="-1"></a>      , <span class="st">&quot;stand_area_ac&quot;</span></span>
+<span id="cb91-61"><a href="silv.html#cb91-61" tabindex="-1"></a>      , <span class="st">&quot;trees_per_ac&quot;</span></span>
+<span id="cb91-62"><a href="silv.html#cb91-62" tabindex="-1"></a>      , <span class="st">&quot;mean_dbh_in&quot;</span></span>
+<span id="cb91-63"><a href="silv.html#cb91-63" tabindex="-1"></a>      , <span class="st">&quot;qmd_in&quot;</span></span>
+<span id="cb91-64"><a href="silv.html#cb91-64" tabindex="-1"></a>      , <span class="st">&quot;mean_tree_height_ft&quot;</span></span>
+<span id="cb91-65"><a href="silv.html#cb91-65" tabindex="-1"></a>      , <span class="st">&quot;loreys_height_ft&quot;</span></span>
+<span id="cb91-66"><a href="silv.html#cb91-66" tabindex="-1"></a>      , <span class="st">&quot;basal_area_ft2&quot;</span></span>
+<span id="cb91-67"><a href="silv.html#cb91-67" tabindex="-1"></a>      , <span class="st">&quot;basal_area_ft2_per_ac&quot;</span></span>
+<span id="cb91-68"><a href="silv.html#cb91-68" tabindex="-1"></a>    )</span>
+<span id="cb91-69"><a href="silv.html#cb91-69" tabindex="-1"></a></span>
+<span id="cb91-70"><a href="silv.html#cb91-70" tabindex="-1"></a><span class="do">### export tabular</span></span>
+<span id="cb91-71"><a href="silv.html#cb91-71" tabindex="-1"></a>  <span class="fu">write.csv</span>(</span>
+<span id="cb91-72"><a href="silv.html#cb91-72" tabindex="-1"></a>      silv_metrics</span>
+<span id="cb91-73"><a href="silv.html#cb91-73" tabindex="-1"></a>      , <span class="fu">paste0</span>(delivery_dir, <span class="st">&quot;/stand_silv_metrics.csv&quot;</span>)</span>
+<span id="cb91-74"><a href="silv.html#cb91-74" tabindex="-1"></a>      , <span class="at">row.names =</span> F</span>
+<span id="cb91-75"><a href="silv.html#cb91-75" tabindex="-1"></a>    )</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="silv.html#cb92-1" tabindex="-1"></a>tab_met_fn <span class="ot">=</span> <span class="cf">function</span>(my_suid){</span>
+<span id="cb92-2"><a href="silv.html#cb92-2" tabindex="-1"></a>  silv_metrics <span class="sc">%&gt;%</span> </span>
+<span id="cb92-3"><a href="silv.html#cb92-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(suid <span class="sc">==</span> my_suid) <span class="sc">%&gt;%</span> </span>
+<span id="cb92-4"><a href="silv.html#cb92-4" tabindex="-1"></a>    sf<span class="sc">::</span><span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb92-5"><a href="silv.html#cb92-5" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb92-6"><a href="silv.html#cb92-6" tabindex="-1"></a>      <span class="st">&quot;suid&quot;</span></span>
+<span id="cb92-7"><a href="silv.html#cb92-7" tabindex="-1"></a>      , <span class="st">&quot;stand_area_ha&quot;</span></span>
+<span id="cb92-8"><a href="silv.html#cb92-8" tabindex="-1"></a>      , <span class="st">&quot;n_trees&quot;</span></span>
+<span id="cb92-9"><a href="silv.html#cb92-9" tabindex="-1"></a>      , <span class="st">&quot;trees_per_ha&quot;</span></span>
+<span id="cb92-10"><a href="silv.html#cb92-10" tabindex="-1"></a>      , <span class="st">&quot;mean_dbh_cm&quot;</span></span>
+<span id="cb92-11"><a href="silv.html#cb92-11" tabindex="-1"></a>      , <span class="st">&quot;qmd_cm&quot;</span></span>
+<span id="cb92-12"><a href="silv.html#cb92-12" tabindex="-1"></a>      , <span class="st">&quot;mean_tree_height_m&quot;</span></span>
+<span id="cb92-13"><a href="silv.html#cb92-13" tabindex="-1"></a>      , <span class="st">&quot;loreys_height_m&quot;</span></span>
+<span id="cb92-14"><a href="silv.html#cb92-14" tabindex="-1"></a>      , <span class="st">&quot;basal_area_m2_per_ha&quot;</span></span>
+<span id="cb92-15"><a href="silv.html#cb92-15" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb92-16"><a href="silv.html#cb92-16" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
+<span id="cb92-17"><a href="silv.html#cb92-17" tabindex="-1"></a>      <span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(suid), <span class="at">names_to =</span> <span class="st">&quot;metric&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;val&quot;</span></span>
+<span id="cb92-18"><a href="silv.html#cb92-18" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb92-19"><a href="silv.html#cb92-19" tabindex="-1"></a>    <span class="co"># order metrics</span></span>
+<span id="cb92-20"><a href="silv.html#cb92-20" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb92-21"><a href="silv.html#cb92-21" tabindex="-1"></a>      <span class="at">metric =</span> <span class="fu">factor</span>(</span>
+<span id="cb92-22"><a href="silv.html#cb92-22" tabindex="-1"></a>        metric</span>
+<span id="cb92-23"><a href="silv.html#cb92-23" tabindex="-1"></a>        , <span class="at">ordered =</span> T</span>
+<span id="cb92-24"><a href="silv.html#cb92-24" tabindex="-1"></a>        , <span class="at">levels =</span> <span class="fu">c</span>(</span>
+<span id="cb92-25"><a href="silv.html#cb92-25" tabindex="-1"></a>            <span class="st">&quot;stand_area_ha&quot;</span></span>
+<span id="cb92-26"><a href="silv.html#cb92-26" tabindex="-1"></a>            , <span class="st">&quot;n_trees&quot;</span></span>
+<span id="cb92-27"><a href="silv.html#cb92-27" tabindex="-1"></a>            , <span class="st">&quot;trees_per_ha&quot;</span></span>
+<span id="cb92-28"><a href="silv.html#cb92-28" tabindex="-1"></a>            , <span class="st">&quot;mean_tree_height_m&quot;</span></span>
+<span id="cb92-29"><a href="silv.html#cb92-29" tabindex="-1"></a>            , <span class="st">&quot;loreys_height_m&quot;</span></span>
+<span id="cb92-30"><a href="silv.html#cb92-30" tabindex="-1"></a>            , <span class="st">&quot;mean_dbh_cm&quot;</span></span>
+<span id="cb92-31"><a href="silv.html#cb92-31" tabindex="-1"></a>            , <span class="st">&quot;qmd_cm&quot;</span></span>
+<span id="cb92-32"><a href="silv.html#cb92-32" tabindex="-1"></a>            , <span class="st">&quot;basal_area_m2_per_ha&quot;</span></span>
+<span id="cb92-33"><a href="silv.html#cb92-33" tabindex="-1"></a>          )</span>
+<span id="cb92-34"><a href="silv.html#cb92-34" tabindex="-1"></a>        , <span class="at">labels =</span> <span class="fu">c</span>(</span>
+<span id="cb92-35"><a href="silv.html#cb92-35" tabindex="-1"></a>            latex2exp<span class="sc">::</span><span class="fu">TeX</span>(<span class="st">&quot;Stand Area (ha)&quot;</span>, <span class="at">output =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb92-36"><a href="silv.html#cb92-36" tabindex="-1"></a>            , latex2exp<span class="sc">::</span><span class="fu">TeX</span>(<span class="st">&quot;Number of Trees&quot;</span>, <span class="at">output =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb92-37"><a href="silv.html#cb92-37" tabindex="-1"></a>            , latex2exp<span class="sc">::</span><span class="fu">TeX</span>(<span class="st">&quot;Trees $ha^{-1}$&quot;</span>)</span>
+<span id="cb92-38"><a href="silv.html#cb92-38" tabindex="-1"></a>            , latex2exp<span class="sc">::</span><span class="fu">TeX</span>(<span class="st">&quot;Mean Tree Height (m)&quot;</span>, <span class="at">output =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb92-39"><a href="silv.html#cb92-39" tabindex="-1"></a>            , latex2exp<span class="sc">::</span><span class="fu">TeX</span>(<span class="st">&quot;Lorey&#39;s Mean Height (m)&quot;</span>, <span class="at">output =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb92-40"><a href="silv.html#cb92-40" tabindex="-1"></a>            , latex2exp<span class="sc">::</span><span class="fu">TeX</span>(<span class="st">&quot;Mean DBH (cm)&quot;</span>, <span class="at">output =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb92-41"><a href="silv.html#cb92-41" tabindex="-1"></a>            , latex2exp<span class="sc">::</span><span class="fu">TeX</span>(<span class="st">&quot;QMD (cm)&quot;</span>, <span class="at">output =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb92-42"><a href="silv.html#cb92-42" tabindex="-1"></a>            , latex2exp<span class="sc">::</span><span class="fu">TeX</span>(<span class="st">&quot;Basal Area $m^{2} </span><span class="sc">\\</span><span class="st">cdot ha^{-1}$&quot;</span>)</span>
+<span id="cb92-43"><a href="silv.html#cb92-43" tabindex="-1"></a>          )</span>
+<span id="cb92-44"><a href="silv.html#cb92-44" tabindex="-1"></a>      )</span>
+<span id="cb92-45"><a href="silv.html#cb92-45" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb92-46"><a href="silv.html#cb92-46" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">val =</span> scales<span class="sc">::</span><span class="fu">comma</span>(val,<span class="at">accuracy=</span><span class="fl">0.1</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb92-47"><a href="silv.html#cb92-47" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(metric, val) <span class="sc">%&gt;%</span> </span>
+<span id="cb92-48"><a href="silv.html#cb92-48" tabindex="-1"></a>    ggpubr<span class="sc">::</span><span class="fu">ggtexttable</span>(</span>
+<span id="cb92-49"><a href="silv.html#cb92-49" tabindex="-1"></a>      <span class="at">rows =</span> <span class="cn">NULL</span></span>
+<span id="cb92-50"><a href="silv.html#cb92-50" tabindex="-1"></a>      , <span class="at">cols =</span> <span class="fu">rep</span>(<span class="st">&quot;&quot;</span>, <span class="dv">2</span>)</span>
+<span id="cb92-51"><a href="silv.html#cb92-51" tabindex="-1"></a>      , <span class="at">theme =</span> ggpubr<span class="sc">::</span><span class="fu">ttheme</span>(</span>
+<span id="cb92-52"><a href="silv.html#cb92-52" tabindex="-1"></a>        <span class="at">base_style =</span> <span class="st">&quot;blank&quot;</span></span>
+<span id="cb92-53"><a href="silv.html#cb92-53" tabindex="-1"></a>        , <span class="at">tbody.style =</span> ggpubr<span class="sc">::</span><span class="fu">tbody_style</span>(</span>
+<span id="cb92-54"><a href="silv.html#cb92-54" tabindex="-1"></a>          <span class="at">parse =</span> T, <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="at">linecolor =</span> <span class="st">&quot;gray&quot;</span></span>
+<span id="cb92-55"><a href="silv.html#cb92-55" tabindex="-1"></a>          , <span class="at">size =</span> <span class="dv">10</span></span>
+<span id="cb92-56"><a href="silv.html#cb92-56" tabindex="-1"></a>        )</span>
+<span id="cb92-57"><a href="silv.html#cb92-57" tabindex="-1"></a>      )</span>
+<span id="cb92-58"><a href="silv.html#cb92-58" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb92-59"><a href="silv.html#cb92-59" tabindex="-1"></a>    ggpubr<span class="sc">::</span><span class="fu">tab_add_title</span>(</span>
+<span id="cb92-60"><a href="silv.html#cb92-60" tabindex="-1"></a>      <span class="at">text =</span> <span class="fu">paste0</span>(</span>
+<span id="cb92-61"><a href="silv.html#cb92-61" tabindex="-1"></a>        <span class="st">&quot;Silvicultural Metrics (metric)&quot;</span></span>
+<span id="cb92-62"><a href="silv.html#cb92-62" tabindex="-1"></a>        <span class="co"># , &quot;\nOverstory (&gt;= &quot;</span></span>
+<span id="cb92-63"><a href="silv.html#cb92-63" tabindex="-1"></a>        <span class="co"># , scales::comma(ostory_dbh_cm,accuracy = 0.1)</span></span>
+<span id="cb92-64"><a href="silv.html#cb92-64" tabindex="-1"></a>        <span class="co"># , &quot; cm DBH)&quot;</span></span>
+<span id="cb92-65"><a href="silv.html#cb92-65" tabindex="-1"></a>        )</span>
+<span id="cb92-66"><a href="silv.html#cb92-66" tabindex="-1"></a>      , <span class="at">face =</span> <span class="st">&quot;bold&quot;</span></span>
+<span id="cb92-67"><a href="silv.html#cb92-67" tabindex="-1"></a>      , <span class="at">size =</span> <span class="dv">10</span>, <span class="at">padding =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">&quot;line&quot;</span>)</span>
+<span id="cb92-68"><a href="silv.html#cb92-68" tabindex="-1"></a>    )</span>
+<span id="cb92-69"><a href="silv.html#cb92-69" tabindex="-1"></a>}</span>
+<span id="cb92-70"><a href="silv.html#cb92-70" tabindex="-1"></a><span class="co"># tab_met_fn(1)</span></span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="silv.html#cb93-1" tabindex="-1"></a>tab_imp_fn <span class="ot">=</span> <span class="cf">function</span>(my_suid){</span>
+<span id="cb93-2"><a href="silv.html#cb93-2" tabindex="-1"></a>  silv_metrics <span class="sc">%&gt;%</span> </span>
+<span id="cb93-3"><a href="silv.html#cb93-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(suid <span class="sc">==</span> my_suid) <span class="sc">%&gt;%</span> </span>
+<span id="cb93-4"><a href="silv.html#cb93-4" tabindex="-1"></a>    sf<span class="sc">::</span><span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb93-5"><a href="silv.html#cb93-5" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb93-6"><a href="silv.html#cb93-6" tabindex="-1"></a>      <span class="st">&quot;suid&quot;</span></span>
+<span id="cb93-7"><a href="silv.html#cb93-7" tabindex="-1"></a>      , <span class="st">&quot;stand_area_ac&quot;</span></span>
+<span id="cb93-8"><a href="silv.html#cb93-8" tabindex="-1"></a>      , <span class="st">&quot;n_trees&quot;</span></span>
+<span id="cb93-9"><a href="silv.html#cb93-9" tabindex="-1"></a>      , <span class="st">&quot;trees_per_ac&quot;</span></span>
+<span id="cb93-10"><a href="silv.html#cb93-10" tabindex="-1"></a>      , <span class="st">&quot;mean_dbh_in&quot;</span></span>
+<span id="cb93-11"><a href="silv.html#cb93-11" tabindex="-1"></a>      , <span class="st">&quot;qmd_in&quot;</span></span>
+<span id="cb93-12"><a href="silv.html#cb93-12" tabindex="-1"></a>      , <span class="st">&quot;mean_tree_height_ft&quot;</span></span>
+<span id="cb93-13"><a href="silv.html#cb93-13" tabindex="-1"></a>      , <span class="st">&quot;loreys_height_ft&quot;</span></span>
+<span id="cb93-14"><a href="silv.html#cb93-14" tabindex="-1"></a>      , <span class="st">&quot;basal_area_ft2_per_ac&quot;</span></span>
+<span id="cb93-15"><a href="silv.html#cb93-15" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb93-16"><a href="silv.html#cb93-16" tabindex="-1"></a>    tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
+<span id="cb93-17"><a href="silv.html#cb93-17" tabindex="-1"></a>      <span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(suid), <span class="at">names_to =</span> <span class="st">&quot;metric&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;val&quot;</span></span>
+<span id="cb93-18"><a href="silv.html#cb93-18" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb93-19"><a href="silv.html#cb93-19" tabindex="-1"></a>    <span class="co"># order metrics</span></span>
+<span id="cb93-20"><a href="silv.html#cb93-20" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb93-21"><a href="silv.html#cb93-21" tabindex="-1"></a>      <span class="at">metric =</span> <span class="fu">factor</span>(</span>
+<span id="cb93-22"><a href="silv.html#cb93-22" tabindex="-1"></a>        metric</span>
+<span id="cb93-23"><a href="silv.html#cb93-23" tabindex="-1"></a>        , <span class="at">ordered =</span> T</span>
+<span id="cb93-24"><a href="silv.html#cb93-24" tabindex="-1"></a>        , <span class="at">levels =</span> <span class="fu">c</span>(</span>
+<span id="cb93-25"><a href="silv.html#cb93-25" tabindex="-1"></a>            <span class="st">&quot;stand_area_ac&quot;</span></span>
+<span id="cb93-26"><a href="silv.html#cb93-26" tabindex="-1"></a>            , <span class="st">&quot;n_trees&quot;</span></span>
+<span id="cb93-27"><a href="silv.html#cb93-27" tabindex="-1"></a>            , <span class="st">&quot;trees_per_ac&quot;</span></span>
+<span id="cb93-28"><a href="silv.html#cb93-28" tabindex="-1"></a>            , <span class="st">&quot;mean_tree_height_ft&quot;</span></span>
+<span id="cb93-29"><a href="silv.html#cb93-29" tabindex="-1"></a>            , <span class="st">&quot;loreys_height_ft&quot;</span></span>
+<span id="cb93-30"><a href="silv.html#cb93-30" tabindex="-1"></a>            , <span class="st">&quot;mean_dbh_in&quot;</span></span>
+<span id="cb93-31"><a href="silv.html#cb93-31" tabindex="-1"></a>            , <span class="st">&quot;qmd_in&quot;</span></span>
+<span id="cb93-32"><a href="silv.html#cb93-32" tabindex="-1"></a>            , <span class="st">&quot;basal_area_ft2_per_ac&quot;</span></span>
+<span id="cb93-33"><a href="silv.html#cb93-33" tabindex="-1"></a>          )</span>
+<span id="cb93-34"><a href="silv.html#cb93-34" tabindex="-1"></a>        , <span class="at">labels =</span> <span class="fu">c</span>(</span>
+<span id="cb93-35"><a href="silv.html#cb93-35" tabindex="-1"></a>            latex2exp<span class="sc">::</span><span class="fu">TeX</span>(<span class="st">&quot;Stand Area (ac)&quot;</span>, <span class="at">output =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb93-36"><a href="silv.html#cb93-36" tabindex="-1"></a>            , latex2exp<span class="sc">::</span><span class="fu">TeX</span>(<span class="st">&quot;Number of Trees&quot;</span>, <span class="at">output =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb93-37"><a href="silv.html#cb93-37" tabindex="-1"></a>            , latex2exp<span class="sc">::</span><span class="fu">TeX</span>(<span class="st">&quot;Trees $ac^{-1}$&quot;</span>)</span>
+<span id="cb93-38"><a href="silv.html#cb93-38" tabindex="-1"></a>            , latex2exp<span class="sc">::</span><span class="fu">TeX</span>(<span class="st">&quot;Mean Tree Height (ft)&quot;</span>, <span class="at">output =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb93-39"><a href="silv.html#cb93-39" tabindex="-1"></a>            , latex2exp<span class="sc">::</span><span class="fu">TeX</span>(<span class="st">&quot;Lorey&#39;s Mean Height (ft)&quot;</span>, <span class="at">output =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb93-40"><a href="silv.html#cb93-40" tabindex="-1"></a>            , latex2exp<span class="sc">::</span><span class="fu">TeX</span>(<span class="st">&quot;Mean DBH (in)&quot;</span>, <span class="at">output =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb93-41"><a href="silv.html#cb93-41" tabindex="-1"></a>            , latex2exp<span class="sc">::</span><span class="fu">TeX</span>(<span class="st">&quot;QMD (in)&quot;</span>, <span class="at">output =</span> <span class="st">&quot;character&quot;</span>)</span>
+<span id="cb93-42"><a href="silv.html#cb93-42" tabindex="-1"></a>            , latex2exp<span class="sc">::</span><span class="fu">TeX</span>(<span class="st">&quot;Basal Area $ft^{2} </span><span class="sc">\\</span><span class="st">cdot ac^{-1}$&quot;</span>)</span>
+<span id="cb93-43"><a href="silv.html#cb93-43" tabindex="-1"></a>          )</span>
+<span id="cb93-44"><a href="silv.html#cb93-44" tabindex="-1"></a>      )</span>
+<span id="cb93-45"><a href="silv.html#cb93-45" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb93-46"><a href="silv.html#cb93-46" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">val =</span> scales<span class="sc">::</span><span class="fu">comma</span>(val,<span class="at">accuracy=</span><span class="fl">0.1</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb93-47"><a href="silv.html#cb93-47" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(metric, val) <span class="sc">%&gt;%</span> </span>
+<span id="cb93-48"><a href="silv.html#cb93-48" tabindex="-1"></a>    ggpubr<span class="sc">::</span><span class="fu">ggtexttable</span>(</span>
+<span id="cb93-49"><a href="silv.html#cb93-49" tabindex="-1"></a>      <span class="at">rows =</span> <span class="cn">NULL</span></span>
+<span id="cb93-50"><a href="silv.html#cb93-50" tabindex="-1"></a>      , <span class="at">cols =</span> <span class="fu">rep</span>(<span class="st">&quot;&quot;</span>, <span class="dv">2</span>)</span>
+<span id="cb93-51"><a href="silv.html#cb93-51" tabindex="-1"></a>      , <span class="at">theme =</span> ggpubr<span class="sc">::</span><span class="fu">ttheme</span>(</span>
+<span id="cb93-52"><a href="silv.html#cb93-52" tabindex="-1"></a>        <span class="at">base_style =</span> <span class="st">&quot;blank&quot;</span></span>
+<span id="cb93-53"><a href="silv.html#cb93-53" tabindex="-1"></a>        , <span class="at">tbody.style =</span> ggpubr<span class="sc">::</span><span class="fu">tbody_style</span>(</span>
+<span id="cb93-54"><a href="silv.html#cb93-54" tabindex="-1"></a>          <span class="at">parse =</span> T, <span class="at">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="at">linecolor =</span> <span class="st">&quot;gray&quot;</span></span>
+<span id="cb93-55"><a href="silv.html#cb93-55" tabindex="-1"></a>          , <span class="at">size =</span> <span class="dv">10</span></span>
+<span id="cb93-56"><a href="silv.html#cb93-56" tabindex="-1"></a>        )</span>
+<span id="cb93-57"><a href="silv.html#cb93-57" tabindex="-1"></a>      )</span>
+<span id="cb93-58"><a href="silv.html#cb93-58" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb93-59"><a href="silv.html#cb93-59" tabindex="-1"></a>    ggpubr<span class="sc">::</span><span class="fu">tab_add_title</span>(</span>
+<span id="cb93-60"><a href="silv.html#cb93-60" tabindex="-1"></a>      <span class="at">text =</span> <span class="fu">paste0</span>(</span>
+<span id="cb93-61"><a href="silv.html#cb93-61" tabindex="-1"></a>        <span class="st">&quot;Silvicultural Metrics (imperial)&quot;</span></span>
+<span id="cb93-62"><a href="silv.html#cb93-62" tabindex="-1"></a>        <span class="co"># , &quot;\nOverstory (&gt;= &quot;</span></span>
+<span id="cb93-63"><a href="silv.html#cb93-63" tabindex="-1"></a>        <span class="co"># , scales::comma(ostory_dbh_cm/2.54,accuracy = 0.1)</span></span>
+<span id="cb93-64"><a href="silv.html#cb93-64" tabindex="-1"></a>        <span class="co"># , &quot; in. DBH)&quot;</span></span>
+<span id="cb93-65"><a href="silv.html#cb93-65" tabindex="-1"></a>        )</span>
+<span id="cb93-66"><a href="silv.html#cb93-66" tabindex="-1"></a>      , <span class="at">face =</span> <span class="st">&quot;bold&quot;</span></span>
+<span id="cb93-67"><a href="silv.html#cb93-67" tabindex="-1"></a>      , <span class="at">size =</span> <span class="dv">10</span>, <span class="at">padding =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">&quot;line&quot;</span>)</span>
+<span id="cb93-68"><a href="silv.html#cb93-68" tabindex="-1"></a>    )</span>
+<span id="cb93-69"><a href="silv.html#cb93-69" tabindex="-1"></a>}</span>
+<span id="cb93-70"><a href="silv.html#cb93-70" tabindex="-1"></a><span class="co"># tab_imp_fn(1)</span></span></code></pre></div>
+<div id="stand-summary-metrics" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Stand Summary Metrics<a href="silv.html#stand-summary-metrics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="silv.html#cb94-1" tabindex="-1"></a><span class="fu">tab_imp_fn</span>(<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">tab_met_fn</span>(<span class="dv">1</span>)</span></code></pre></div>
+<p><img src="manitou_uas_202406_files/figure-html/unnamed-chunk-78-1.png" width="1008" /></p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="silv.html#cb95-1" tabindex="-1"></a><span class="co"># save it</span></span>
+<span id="cb95-2"><a href="silv.html#cb95-2" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="fu">paste0</span>(delivery_dir, <span class="st">&quot;/silv_metrics.jpeg&quot;</span>), <span class="at">dpi =</span> <span class="st">&quot;print&quot;</span>, <span class="at">height =</span> <span class="fl">3.5</span>, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">device =</span> <span class="st">&quot;jpeg&quot;</span>)</span></code></pre></div>
+</div>
+<div id="dbh-distrubtion" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> DBH Distrubtion<a href="silv.html#dbh-distrubtion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="silv.html#cb96-1" tabindex="-1"></a>dbh_temp <span class="ot">=</span> harvests_trees <span class="sc">%&gt;%</span></span>
+<span id="cb96-2"><a href="silv.html#cb96-2" tabindex="-1"></a>  sf<span class="sc">::</span><span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb96-3"><a href="silv.html#cb96-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(treeID, dbh_in) <span class="sc">%&gt;%</span> </span>
+<span id="cb96-4"><a href="silv.html#cb96-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb96-5"><a href="silv.html#cb96-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb96-6"><a href="silv.html#cb96-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb96-7"><a href="silv.html#cb96-7" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dbh_in)</span>
+<span id="cb96-8"><a href="silv.html#cb96-8" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb96-9"><a href="silv.html#cb96-9" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">fill =</span> <span class="st">&quot;navy&quot;</span>, <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span> </span>
+<span id="cb96-10"><a href="silv.html#cb96-10" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb96-11"><a href="silv.html#cb96-11" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;DBH (in)&quot;</span></span>
+<span id="cb96-12"><a href="silv.html#cb96-12" tabindex="-1"></a>      , <span class="at">y =</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb96-13"><a href="silv.html#cb96-13" tabindex="-1"></a>      , <span class="at">title =</span> <span class="st">&quot;SfM-derived tree DBH distribution&quot;</span></span>
+<span id="cb96-14"><a href="silv.html#cb96-14" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb96-15"><a href="silv.html#cb96-15" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> scales<span class="sc">::</span><span class="fu">extended_breaks</span>(<span class="at">n=</span><span class="dv">20</span>)) <span class="sc">+</span></span>
+<span id="cb96-16"><a href="silv.html#cb96-16" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb96-17"><a href="silv.html#cb96-17" tabindex="-1"></a>    <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb96-18"><a href="silv.html#cb96-18" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb96-19"><a href="silv.html#cb96-19" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span></span>
+<span id="cb96-20"><a href="silv.html#cb96-20" tabindex="-1"></a>    )</span>
+<span id="cb96-21"><a href="silv.html#cb96-21" tabindex="-1"></a>dbh_temp</span></code></pre></div>
+<p><img src="manitou_uas_202406_files/figure-html/os-dbh-dist-1.png" width="1008" /></p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="silv.html#cb97-1" tabindex="-1"></a>tpa_temp <span class="ot">=</span> </span>
+<span id="cb97-2"><a href="silv.html#cb97-2" tabindex="-1"></a>  harvests_trees <span class="sc">%&gt;%</span></span>
+<span id="cb97-3"><a href="silv.html#cb97-3" tabindex="-1"></a>    sf<span class="sc">::</span><span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb97-4"><a href="silv.html#cb97-4" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(treeID, dbh_in, stand_area_ha) <span class="sc">%&gt;%</span> </span>
+<span id="cb97-5"><a href="silv.html#cb97-5" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb97-6"><a href="silv.html#cb97-6" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">distinct</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb97-7"><a href="silv.html#cb97-7" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb97-8"><a href="silv.html#cb97-8" tabindex="-1"></a>      <span class="at">dbh_cl =</span> ggplot2<span class="sc">::</span><span class="fu">cut_width</span>(dbh_in, <span class="at">width =</span> <span class="dv">1</span>, <span class="at">center =</span> <span class="fl">0.5</span>, <span class="at">closed =</span> <span class="st">&quot;left&quot;</span>)</span>
+<span id="cb97-9"><a href="silv.html#cb97-9" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb97-10"><a href="silv.html#cb97-10" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">group_by</span>(dbh_cl) <span class="sc">%&gt;%</span> </span>
+<span id="cb97-11"><a href="silv.html#cb97-11" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb97-12"><a href="silv.html#cb97-12" tabindex="-1"></a>      <span class="at">n_trees =</span> dplyr<span class="sc">::</span><span class="fu">n</span>()</span>
+<span id="cb97-13"><a href="silv.html#cb97-13" tabindex="-1"></a>      , <span class="at">trees_per_ac =</span> dplyr<span class="sc">::</span><span class="fu">n</span>()<span class="sc">/</span><span class="fu">max</span>(stand_area_ha <span class="sc">%&gt;%</span> <span class="st">`</span><span class="at">*</span><span class="st">`</span>(<span class="fl">2.471</span>))</span>
+<span id="cb97-14"><a href="silv.html#cb97-14" tabindex="-1"></a>      , <span class="at">trees_per_ha =</span> dplyr<span class="sc">::</span><span class="fu">n</span>()<span class="sc">/</span><span class="fu">max</span>(stand_area_ha)</span>
+<span id="cb97-15"><a href="silv.html#cb97-15" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb97-16"><a href="silv.html#cb97-16" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb97-17"><a href="silv.html#cb97-17" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb97-18"><a href="silv.html#cb97-18" tabindex="-1"></a>      <span class="at">tot_trees_per_ac =</span> <span class="fu">sum</span>(trees_per_ac)</span>
+<span id="cb97-19"><a href="silv.html#cb97-19" tabindex="-1"></a>      , <span class="at">tot_trees_per_ha =</span> <span class="fu">sum</span>(trees_per_ha)</span>
+<span id="cb97-20"><a href="silv.html#cb97-20" tabindex="-1"></a>      , <span class="at">pct =</span> trees_per_ac<span class="sc">/</span>tot_trees_per_ac</span>
+<span id="cb97-21"><a href="silv.html#cb97-21" tabindex="-1"></a>      , <span class="at">dbh_cl_lab =</span> <span class="fu">paste0</span>(</span>
+<span id="cb97-22"><a href="silv.html#cb97-22" tabindex="-1"></a>        stringr<span class="sc">::</span><span class="fu">word</span>(dbh_cl, <span class="dv">1</span>, <span class="at">sep =</span> <span class="fu">fixed</span>(<span class="st">&quot;,&quot;</span>)) <span class="sc">%&gt;%</span> readr<span class="sc">::</span><span class="fu">parse_number</span>()</span>
+<span id="cb97-23"><a href="silv.html#cb97-23" tabindex="-1"></a>        , <span class="st">&quot; to &quot;</span></span>
+<span id="cb97-24"><a href="silv.html#cb97-24" tabindex="-1"></a>        , stringr<span class="sc">::</span><span class="fu">word</span>(dbh_cl, <span class="sc">-</span><span class="dv">1</span>, <span class="at">sep =</span> <span class="fu">fixed</span>(<span class="st">&quot;,&quot;</span>)) <span class="sc">%&gt;%</span> readr<span class="sc">::</span><span class="fu">parse_number</span>() <span class="sc">%&gt;%</span> <span class="st">`</span><span class="at">-</span><span class="st">`</span>(<span class="fl">0.1</span>)</span>
+<span id="cb97-25"><a href="silv.html#cb97-25" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span> </span>
+<span id="cb97-26"><a href="silv.html#cb97-26" tabindex="-1"></a>      <span class="fu">factor</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb97-27"><a href="silv.html#cb97-27" tabindex="-1"></a>      forcats<span class="sc">::</span><span class="fu">fct_reorder</span>(stringr<span class="sc">::</span><span class="fu">word</span>(dbh_cl, <span class="dv">1</span>, <span class="at">sep =</span> <span class="fu">fixed</span>(<span class="st">&quot;,&quot;</span>)) <span class="sc">%&gt;%</span> readr<span class="sc">::</span><span class="fu">parse_number</span>())</span>
+<span id="cb97-28"><a href="silv.html#cb97-28" tabindex="-1"></a>    )</span>
+<span id="cb97-29"><a href="silv.html#cb97-29" tabindex="-1"></a></span>
+<span id="cb97-30"><a href="silv.html#cb97-30" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb97-31"><a href="silv.html#cb97-31" tabindex="-1"></a>tpa_temp <span class="sc">%&gt;%</span> </span>
+<span id="cb97-32"><a href="silv.html#cb97-32" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb97-33"><a href="silv.html#cb97-33" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb97-34"><a href="silv.html#cb97-34" tabindex="-1"></a>      <span class="at">x =</span> dbh_cl_lab, <span class="at">y =</span> trees_per_ac</span>
+<span id="cb97-35"><a href="silv.html#cb97-35" tabindex="-1"></a>      , <span class="at">fill=</span>trees_per_ac</span>
+<span id="cb97-36"><a href="silv.html#cb97-36" tabindex="-1"></a>      , <span class="at">label =</span> <span class="fu">paste0</span>(</span>
+<span id="cb97-37"><a href="silv.html#cb97-37" tabindex="-1"></a>        scales<span class="sc">::</span><span class="fu">comma</span>(trees_per_ac, <span class="at">accuracy =</span> <span class="fl">0.1</span>)</span>
+<span id="cb97-38"><a href="silv.html#cb97-38" tabindex="-1"></a>        , <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span></span>
+<span id="cb97-39"><a href="silv.html#cb97-39" tabindex="-1"></a>        , scales<span class="sc">::</span><span class="fu">percent</span>(pct, <span class="at">accuracy =</span> <span class="fl">0.1</span>)</span>
+<span id="cb97-40"><a href="silv.html#cb97-40" tabindex="-1"></a>      )</span>
+<span id="cb97-41"><a href="silv.html#cb97-41" tabindex="-1"></a>    )</span>
+<span id="cb97-42"><a href="silv.html#cb97-42" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb97-43"><a href="silv.html#cb97-43" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb97-44"><a href="silv.html#cb97-44" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb97-45"><a href="silv.html#cb97-45" tabindex="-1"></a>    <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">&quot;mako&quot;</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb97-46"><a href="silv.html#cb97-46" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">comma_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>),<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">13</span>))) <span class="sc">+</span></span>
+<span id="cb97-47"><a href="silv.html#cb97-47" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb97-48"><a href="silv.html#cb97-48" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;DBH (in) Class&quot;</span></span>
+<span id="cb97-49"><a href="silv.html#cb97-49" tabindex="-1"></a>      , <span class="at">y =</span> <span class="st">&quot;TPA&quot;</span></span>
+<span id="cb97-50"><a href="silv.html#cb97-50" tabindex="-1"></a>      , <span class="at">title =</span> <span class="st">&quot;Trees Per Acre by Diameter Class&quot;</span></span>
+<span id="cb97-51"><a href="silv.html#cb97-51" tabindex="-1"></a>      , <span class="at">subtitle =</span> <span class="fu">paste0</span>(</span>
+<span id="cb97-52"><a href="silv.html#cb97-52" tabindex="-1"></a>          <span class="st">&quot;Total TPA: &quot;</span></span>
+<span id="cb97-53"><a href="silv.html#cb97-53" tabindex="-1"></a>          , scales<span class="sc">::</span><span class="fu">comma</span>(tpa_temp<span class="sc">$</span>tot_trees_per_ac[<span class="dv">1</span>], <span class="at">accuracy =</span> <span class="dv">1</span>)</span>
+<span id="cb97-54"><a href="silv.html#cb97-54" tabindex="-1"></a>        )</span>
+<span id="cb97-55"><a href="silv.html#cb97-55" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb97-56"><a href="silv.html#cb97-56" tabindex="-1"></a>    <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb97-57"><a href="silv.html#cb97-57" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb97-58"><a href="silv.html#cb97-58" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span></span>
+<span id="cb97-59"><a href="silv.html#cb97-59" tabindex="-1"></a>      , <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="dv">1</span>)</span>
+<span id="cb97-60"><a href="silv.html#cb97-60" tabindex="-1"></a>    )</span></code></pre></div>
+<p><img src="manitou_uas_202406_files/figure-html/os-dbh-dist2-1.png" width="1008" /></p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="silv.html#cb98-1" tabindex="-1"></a><span class="co"># save it</span></span>
+<span id="cb98-2"><a href="silv.html#cb98-2" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="fu">paste0</span>(delivery_dir, <span class="st">&quot;/tpa_dbh.jpeg&quot;</span>), <span class="at">dpi =</span> <span class="st">&quot;print&quot;</span>, <span class="at">height =</span> <span class="dv">7</span>, <span class="at">width =</span> <span class="fl">10.5</span>, <span class="at">device =</span> <span class="st">&quot;jpeg&quot;</span>)</span></code></pre></div>
+</div>
+<div id="height-distribution" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Height Distribution<a href="silv.html#height-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="silv.html#cb99-1" tabindex="-1"></a>ht_temp <span class="ot">=</span> harvests_trees <span class="sc">%&gt;%</span></span>
+<span id="cb99-2"><a href="silv.html#cb99-2" tabindex="-1"></a>  sf<span class="sc">::</span><span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb99-3"><a href="silv.html#cb99-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(treeID, tree_height_ft) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-4"><a href="silv.html#cb99-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb99-5"><a href="silv.html#cb99-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb99-6"><a href="silv.html#cb99-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb99-7"><a href="silv.html#cb99-7" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> tree_height_ft)</span>
+<span id="cb99-8"><a href="silv.html#cb99-8" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb99-9"><a href="silv.html#cb99-9" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>, <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span> </span>
+<span id="cb99-10"><a href="silv.html#cb99-10" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb99-11"><a href="silv.html#cb99-11" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">&quot;Height (ft)&quot;</span></span>
+<span id="cb99-12"><a href="silv.html#cb99-12" tabindex="-1"></a>      , <span class="at">y =</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb99-13"><a href="silv.html#cb99-13" tabindex="-1"></a>      , <span class="at">title =</span> <span class="st">&quot;SfM-derived tree height distribution&quot;</span></span>
+<span id="cb99-14"><a href="silv.html#cb99-14" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb99-15"><a href="silv.html#cb99-15" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> scales<span class="sc">::</span><span class="fu">extended_breaks</span>(<span class="at">n=</span><span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb99-16"><a href="silv.html#cb99-16" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb99-17"><a href="silv.html#cb99-17" tabindex="-1"></a>    <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb99-18"><a href="silv.html#cb99-18" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb99-19"><a href="silv.html#cb99-19" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span></span>
+<span id="cb99-20"><a href="silv.html#cb99-20" tabindex="-1"></a>    )</span>
+<span id="cb99-21"><a href="silv.html#cb99-21" tabindex="-1"></a>ht_temp</span></code></pre></div>
+<p><img src="manitou_uas_202406_files/figure-html/os-ht-dist-1.png" width="1008" /></p>
+<p>height + DBH</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="silv.html#cb100-1" tabindex="-1"></a>ht_temp <span class="sc">+</span> dbh_temp</span></code></pre></div>
+<p><img src="manitou_uas_202406_files/figure-html/unnamed-chunk-79-1.png" width="1008" /></p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="silv.html#cb101-1" tabindex="-1"></a><span class="co"># save it</span></span>
+<span id="cb101-2"><a href="silv.html#cb101-2" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="fu">paste0</span>(delivery_dir, <span class="st">&quot;/ht_dbh_dist.jpeg&quot;</span>), <span class="at">dpi =</span> <span class="st">&quot;print&quot;</span>, <span class="at">height =</span> <span class="dv">7</span>, <span class="at">width =</span> <span class="fl">10.5</span>, <span class="at">device =</span> <span class="st">&quot;jpeg&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="silv.html#cb102-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> harvests_trees, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> dbh_in, <span class="at">x =</span> tree_height_ft)) <span class="sc">+</span></span>
+<span id="cb102-2"><a href="silv.html#cb102-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">color =</span> <span class="st">&quot;firebrick&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb102-3"><a href="silv.html#cb102-3" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="cn">NA</span>), <span class="at">breaks =</span> scales<span class="sc">::</span><span class="fu">extended_breaks</span>(<span class="dv">6</span>)) <span class="sc">+</span></span>
+<span id="cb102-4"><a href="silv.html#cb102-4" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="cn">NA</span>), <span class="at">breaks =</span> scales<span class="sc">::</span><span class="fu">extended_breaks</span>(<span class="dv">15</span>)) <span class="sc">+</span></span>
+<span id="cb102-5"><a href="silv.html#cb102-5" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb102-6"><a href="silv.html#cb102-6" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;SfM-derived tree DBH modeled by tree height&quot;</span></span>
+<span id="cb102-7"><a href="silv.html#cb102-7" tabindex="-1"></a>    , <span class="at">x =</span> <span class="st">&quot;Height (ft)&quot;</span></span>
+<span id="cb102-8"><a href="silv.html#cb102-8" tabindex="-1"></a>    , <span class="at">y =</span> <span class="st">&quot;DBH (in)&quot;</span></span>
+<span id="cb102-9"><a href="silv.html#cb102-9" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb102-10"><a href="silv.html#cb102-10" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span></code></pre></div>
+<p><img src="manitou_uas_202406_files/figure-html/unnamed-chunk-80-1.png" width="1008" /></p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="silv.html#cb103-1" tabindex="-1"></a><span class="co"># save it</span></span>
+<span id="cb103-2"><a href="silv.html#cb103-2" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="fu">paste0</span>(delivery_dir, <span class="st">&quot;/ht_dbh_relationship.jpeg&quot;</span>), <span class="at">dpi =</span> <span class="st">&quot;print&quot;</span>, <span class="at">height =</span> <span class="dv">7</span>, <span class="at">width =</span> <span class="fl">10.5</span>, <span class="at">device =</span> <span class="st">&quot;jpeg&quot;</span>)</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tree_spatial.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
